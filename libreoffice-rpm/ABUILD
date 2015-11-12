@@ -24,9 +24,12 @@ tags="virtual app-office"
 
 provides="libreoffice"
 
-adddeps=" graphite2 hsqldb-java jre libreoffice-rpm_common libreoffice-rpm_langpack_ru libreoffice-rpm_helppack_ru"
+conflicts="libreoffice-writer libreoffice-calc libreoffice-impress libreoffice-base libreoffice-draw libreoffice-math libreoffice-sdk libreoffice-sdk-doc libreoffice-kde-integration 
+libreoffice-gnome-integration"
 
-pkglist="libreoffice-rpm_common libreoffice-rpm_langpack_ru libreoffice-rpm_helppack_ru"
+adddeps="graphite2 hsqldb-java jre libreoffice-common-rpm libreoffice-langpack-ru-rpm libreoffice-helppack-ru-rpm"
+
+pkglist="libreoffice-common-rpm libreoffice-langpack-ru-rpm libreoffice-helppack-ru-rpm"
 
 numjobs=1
 
@@ -47,16 +50,17 @@ cd ${pkgdir}
 
 }
 
-libreoffice-rpm_common() {
+libreoffice-common-rpm() {
 
-pkgname=libreoffice-rpm_common
+pkgname=libreoffice-common-rpm
 shortdesc="Common files for LibreOffice productivity suite"
 arch=("$B_ARCH")
 tags="xapps app-office"
+provides="libreoffice-common"
 
 }
 
-libreoffice-rpm_common_prep() {
+libreoffice-common-rpm_prep() {
 
 cd ${pkgdir}
 cat $srcache/LibreOffice_${pkgver}_Linux_${L_ARCH}_rpm.tar.gz | tar xz
@@ -69,16 +73,17 @@ rm -rf $pkgdir/usr/lib
 
 }
 
-libreoffice-rpm_langpack_ru() {
+libreoffice-langpack-ru-rpm() {
 
-pkgname=libreoffice-rpm_langpack_ru
+pkgname=libreoffice-langpack-ru-rpm
 shortdesc="Russian lang forLibreOffice"
 arch=("$B_ARCH")
 tags="xapps app-office"
+provides="libreoffice-langpack-ru"
 
 }
 
-libreoffice-rpm_langpack_ru_prep() {
+libreoffice-langpack-ru-rpm_prep() {
 
 cd ${pkgdir}
 cat $srcache/LibreOffice_${pkgver}_Linux_${L_ARCH}_rpm_langpack_ru.tar.gz | tar xz
@@ -88,16 +93,17 @@ rm -rf LibreOf*rpm_langpack_ru*
 
 }
 
-libreoffice-rpm_helppack_ru() {
+libreoffice-helppack-ru-rpm() {
 
-pkgname=libreoffice-rpm_helppack_ru
+pkgname=libreoffice-helppack-ru-rpm
 shortdesc="Help files for LibreOffice"
 arch=("$B_ARCH")
 tags="xapps app-office"
+provides="libreoffice-helppack-ru"
 
 }
 
-libreoffice-rpm_helppack_ru_prep() {
+libreoffice-helppack-ru-rpm_prep() {
 
 cd ${pkgdir}
 cat $srcache/LibreOffice_${pkgver}_Linux_${L_ARCH}_rpm_helppack_ru.tar.gz | tar xz

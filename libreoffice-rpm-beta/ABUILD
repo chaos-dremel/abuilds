@@ -1,4 +1,4 @@
-pkgname=libreoffice-rpm-beta
+pkgname=libreoffice-beta-rpm
 pkgver=5.0.3
 pkgbuild=1
 buld_ver=1
@@ -22,11 +22,14 @@ source=("http://download.documentfoundation.org/libreoffice/stable/${pkgver}/rpm
 
 tags="virtual app-office"
 
-provides="libreoffice"
+#provides="libreoffice"
 
-adddeps=" graphite2 hsqldb-java jre libreoffice-rpm_common libreoffice-rpm_langpack_ru libreoffice-rpm_helppack_ru"
+conflicts="libreoffice libreoffice-writer libreoffice-calc libreoffice-impress libreoffice-base libreoffice-draw libreoffice-math \
+libreoffice-sdk libreoffice-sdk-doc libreoffice-kde-integration libreoffice-gnome-integration"
 
-pkglist="libreoffice-rpm_common libreoffice-rpm_langpack_ru libreoffice-rpm_helppack_ru"
+adddeps="graphite2 hsqldb-java jre libreoffice-common-beta-rpm libreoffice-langpack-ru-beta-rpm libreoffice-helppack-ru-beta-rpm"
+
+pkglist="libreoffice-common-beta-rpm libreoffice-langpack-ru-beta-rpm libreoffice-helppack-ru-beta-rpm"
 
 numjobs=1
 
@@ -47,16 +50,17 @@ cd ${pkgdir}
 
 }
 
-libreoffice-rpm_common() {
+libreoffice-common-beta-rpm() {
 
-pkgname=libreoffice-rpm_common
+pkgname=libreoffice-common-beta-rpm
 shortdesc="Common files for LibreOffice productivity suite"
 arch=("$B_ARCH")
 tags="xapps app-office"
+provides="libreoffice-common"
 
 }
 
-libreoffice-rpm_common_prep() {
+libreoffice-common-beta-rpm_prep() {
 
 cd ${pkgdir}
 cat $srcache/LibreOffice_${pkgver}_Linux_${L_ARCH}_rpm.tar.gz | tar xz
@@ -69,16 +73,17 @@ rm -rf $pkgdir/usr/lib
 
 }
 
-libreoffice-rpm_langpack_ru() {
+libreoffice-langpack-ru-beta-rpm() {
 
-pkgname=libreoffice-rpm_langpack_ru
+pkgname=libreoffice-langpack-ru-beta-rpm
 shortdesc="Russian lang forLibreOffice"
 arch=("$B_ARCH")
 tags="xapps app-office"
+provides="libreoffice-langpack-ru"
 
 }
 
-libreoffice-rpm_langpack_ru_prep() {
+libreoffice-langpack-ru-beta-rpm_prep() {
 
 cd ${pkgdir}
 cat $srcache/LibreOffice_${pkgver}_Linux_${L_ARCH}_rpm_langpack_ru.tar.gz | tar xz
@@ -88,16 +93,17 @@ rm -rf LibreOf*rpm_langpack_ru*
 
 }
 
-libreoffice-rpm_helppack_ru() {
+libreoffice-helppack-ru-beta-rpm() {
 
-pkgname=libreoffice-rpm_helppack_ru
+pkgname=libreoffice-helppack-ru-beta-rpm
 shortdesc="Help files for LibreOffice"
 arch=("$B_ARCH")
 tags="xapps app-office"
+provides="libreoffice-helppack-ru"
 
 }
 
-libreoffice-rpm_helppack_ru_prep() {
+libreoffice-helppack-ru-beta-rpm_prep() {
 
 cd ${pkgdir}
 cat $srcache/LibreOffice_${pkgver}_Linux_${L_ARCH}_rpm_helppack_ru.tar.gz | tar xz
