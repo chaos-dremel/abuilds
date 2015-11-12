@@ -22,10 +22,10 @@ source=("http://download.documentfoundation.org/libreoffice/stable/${pkgver}/rpm
 
 tags="virtual app-office"
 
-provides="libreoffice"
+#provides="libreoffice"
 
-conflicts="libreoffice-writer libreoffice-calc libreoffice-impress libreoffice-base libreoffice-draw libreoffice-math libreoffice-sdk libreoffice-sdk-doc libreoffice-kde-integration 
-libreoffice-gnome-integration"
+conflicts="libreoffice libreoffice-writer libreoffice-calc libreoffice-impress libreoffice-base libreoffice-draw libreoffice-math \
+libreoffice-sdk libreoffice-sdk-doc libreoffice-kde-integration libreoffice-gnome-integration"
 
 adddeps="graphite2 hsqldb-java jre libreoffice-common-rpm libreoffice-langpack-ru-rpm libreoffice-helppack-ru-rpm"
 
